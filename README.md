@@ -1,16 +1,20 @@
-# dogst_ui
+# 🐶 DOGST – Discipline Over Gadget Screen Time (Frontend)
 
-A new Flutter project.
+**DOGST** is a gamified screen-time discipline app built with **Flutter**. It rewards users with XP for staying under their screen time targets, allows pets to evolve (e.g., Chihuahua → Great Dane), tracks daily goals, streaks, and displays leaderboards. This is the **frontend** component of the full-stack DOGST application.
 
-## Getting Started
+> 💡 Backend repo: [dogst-backend](https://github.com/v-ai-b-ha-v/dogst_backend)  
+> 🛠 Tech Stack: Flutter + Firebase (Auth) + Node.js + MongoDB
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 📱 **Firebase Authentication**
+- 📊 **Daily screen time tracking**
+- 🏆 **XP-based reward system**
+- 🐕 **Pet evolution stages**
+- 🔥 **Streak tracking and resets**
+- 📈 **Global leaderboard**
+  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
