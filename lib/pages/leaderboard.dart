@@ -50,7 +50,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Could not get leaderboard"),
-          duration: Duration(milliseconds: 700),
+          duration: Duration(milliseconds: 1500),
         ),
       );
       print("Fetch error: $e");

@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:dogst_ui/components/drawerdash.dart';
 import 'package:dogst_ui/components/petcard.dart';
-import 'package:dogst_ui/usage/model/appusage.dart';
 import 'package:dogst_ui/usage/packageToApp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:installed_apps/index.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -21,6 +19,8 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   Map<String, dynamic>? userData;
+
+  int _screenTimeToday = 0;
 
   @override
   void initState() {
@@ -74,10 +74,18 @@ class _DashboardState extends State<Dashboard> {
         final obj = PackagetoAppName();
         await obj.init();
 
-        final urlPost = Uri.parse('https://dogst-backend.onrender.com/api/user/updateStats');
+        final urlPost = Uri.parse("https://dogst-backend.onrender.com/api/user/updateStats");
 
         if (isSameDay) {
+
+          print('it is same day');
           int screenTimeToday = await obj.getTodayScreenTime();
+
+          setState(() {
+            _screenTimeToday = screenTimeToday;
+          });
+
+          print("SCREEN TIME TODAY IS ONLY : ${screenTimeToday}");
 
           final response = await http.post(
             urlPost,
@@ -87,6 +95,9 @@ class _DashboardState extends State<Dashboard> {
             },
             body: jsonEncode({'screenTimeToday': screenTimeToday}),
           );
+
+          print('response is : ${response.body}');
+          print('Response receieved ${response.statusCode}');
 
           if (response.statusCode == 200) {
             final result = jsonDecode(response.body);
@@ -101,13 +112,17 @@ class _DashboardState extends State<Dashboard> {
               ),
             );
           } else {
-            print("Failed to update stats. Status: ${response.statusCode}");
+            print("Failed to update stats. Status: ${response.body}");
           }
         } else {
           List<int> list = await obj.getPrevAndCurrentDayUsage();
 
           int prevDayScreenTime = list[0];
           int currentScreenTime = list[1];
+
+          setState(() {
+            _screenTimeToday = currentScreenTime;
+          });
 
           final response = await http.post(
             urlPost,
@@ -147,7 +162,7 @@ class _DashboardState extends State<Dashboard> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Could not sync data"),
-          duration: Duration(milliseconds: 700),
+          duration: Duration(milliseconds: 1500),
         ),
       );
       print("Fetch error: $e");
@@ -298,7 +313,7 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                   Text(
                                     userData != null
-                                        ? "${userData!['screenTimeToday']} / ${userData!['userTargetScreenTime']}"
+                                        ? "${_screenTimeToday} / ${userData!['userTargetScreenTime']}"
                                         : "Loading...",
                                     style: GoogleFonts.akatab(
                                       fontSize: width * 0.06,
