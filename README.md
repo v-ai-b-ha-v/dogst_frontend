@@ -1,16 +1,41 @@
-# dogst_ui
+# DOGST Frontend
 
-A new Flutter project.
+DOGST is a gamified productivity and screen-time tracking application built with Flutter.  
+The application encourages users to reduce unnecessary screen usage through XP-based pet evolution, streak systems, and interactive progress tracking.
 
-## Getting Started
+This repository contains the Flutter frontend for the DOGST application.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Firebase Email Authentication
+- Real-time screen-time analytics
+- XP-based progression system
+- Virtual pet evolution mechanics
+- Daily streak tracking
+- Persistent user statistics
+- Responsive mobile UI
+- Backend API integration
+- Leaderboard-ready architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## Tech Stack
+
+- Flutter
+- Dart
+- Firebase Authentication
+- REST APIs
+- Node.js Backend
+- MongoDB
+
+---
+
+## Backend Repository
+
+Backend source code:  
+👉 [DOGST Backend](https://github.com/v-ai-b-ha-v/dogst_backend)
+
+---
+
